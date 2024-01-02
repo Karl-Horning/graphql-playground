@@ -3,7 +3,8 @@ const { gql } = require("apollo-server");
 const typeDefs = gql`
     type Query {
         """
-        Apollo Server test query. Returns "Return string!".
+        A test query to check the functionality of Apollo Server.
+        Returns the string "Return string!" as a response.
         """
         test: String!
     }
