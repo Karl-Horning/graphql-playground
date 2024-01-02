@@ -18,6 +18,16 @@ const port = process.env.PORT || 4000;
 const server = new ApolloServer({
     typeDefs,
     resolvers,
+    context: ({ req }) => {
+        // Extract the IP address from the incoming request
+        const ipAddress =
+            req?.headers["x-forwarded-for"] || req?.connection?.remoteAddress;
+
+        return {
+            req,
+            ipAddress,
+        };
+    },
 });
 
 /**
