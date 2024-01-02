@@ -1,14 +1,12 @@
-const rateLimiter = require("../middleware");
-
 const resolvers = {
     Query: {
         /**
          * Apollo Server test query.
          * @returns {String} Returns "Return string!".
          */
-        test: async (_, __, context) => {
+        test: async (_, __, { rateLimiter, ipAddress }) => {
             try {
-                await rateLimiter.consume(context.ipAddress);
+                await rateLimiter.consume(ipAddress);
                 return "Return string!";
             } catch (error) {
                 // Log the error details for debugging

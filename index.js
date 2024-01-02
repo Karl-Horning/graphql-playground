@@ -1,5 +1,6 @@
 const dotenv = require("dotenv");
 const { ApolloServer } = require("apollo-server");
+const rateLimiter = require("./src/middleware"); // Import rateLimiter here
 const resolvers = require("./src/resolvers");
 const typeDefs = require("./src/schemas");
 
@@ -23,9 +24,11 @@ const server = new ApolloServer({
         const ipAddress =
             req?.headers["x-forwarded-for"] || req?.connection?.remoteAddress;
 
+        // Include rateLimiter in the context
         return {
             req,
             ipAddress,
+            rateLimiter,
         };
     },
 });
