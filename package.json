@@ -1,0 +1,31 @@
+{
+  "name": "graphql-playground",
+  "version": "1.0.0",
+  "description": "A GraphQL Playground.",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Karl-Horning/graphql-playground.git"
+  },
+  "keywords": [
+    "GraphQL"
+  ],
+  "author": "Karl Horning",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Karl-Horning/graphql-playground/issues"
+  },
+  "homepage": "https://github.com/Karl-Horning/graphql-playground#readme",
+  "dependencies": {
+    "@apollo/server": "^4.10.0",
+    "graphql": "^16.8.1",
+    "prisma": "^5.7.1"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.2"
+  }
+}
