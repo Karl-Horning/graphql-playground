@@ -1,13 +1,17 @@
-const { gql } = require("apollo-server");
+const { makeExecutableSchema } = require("@graphql-tools/schema");
+const { rateLimitDirective } = require("graphql-rate-limit-directive");
 
-const typeDefs = gql`
-    type Query {
-        """
-        A test query to check the functionality of Apollo Server.
-        Returns the string "Return string!" as a response.
-        """
-        test: String!
-    }
-`;
+const { rateLimitDirectiveTypeDefs, rateLimitDirectiveTransformer } =
+    rateLimitDirective();
 
-module.exports = typeDefs;
+const queries = require("./queries");
+const resolvers = require("../resolvers");
+
+let schema = makeExecutableSchema({
+    typeDefs: [rateLimitDirectiveTypeDefs, queries],
+    resolvers,
+});
+
+schema = rateLimitDirectiveTransformer(schema);
+
+module.exports = schema;

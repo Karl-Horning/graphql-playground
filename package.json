@@ -21,11 +21,12 @@
   },
   "homepage": "https://github.com/Karl-Horning/graphql-playground#readme",
   "dependencies": {
+    "@graphql-tools/schema": "^10.0.2",
     "@prisma/client": "^5.7.1",
     "apollo-server": "^3.13.0",
     "dotenv": "^16.3.1",
     "graphql": "^16.8.1",
-    "rate-limiter-flexible": "^4.0.0"
+    "graphql-rate-limit-directive": "^2.0.5"
   },
   "devDependencies": {
     "nodemon": "^3.0.2",

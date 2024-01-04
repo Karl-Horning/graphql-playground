@@ -4,9 +4,8 @@ const resolvers = {
          * Apollo Server test query.
          * @returns {String} Returns "Return string!".
          */
-        test: async (_, __, { rateLimiter, ipAddress }) => {
+        test: async () => {
             try {
-                await rateLimiter.consume(ipAddress);
                 return "Return string!";
             } catch (error) {
                 // Log the error details for debugging
